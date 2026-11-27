@@ -23,6 +23,7 @@ preflight(){
  pin "${LUMI_REF:-}"; pin "${LCD_REF:-}"
  [[ -n "${UV_VERSION:-}" ]] || fail 'Versão uv não registrada.'
  [[ -x "$HOME/.local/bin/uv" ]] || fail 'Instale previamente uv verificado (docs/installation.md).'
+ /usr/bin/python3 "$ROOT/scripts/verify-artifacts.py" --uv "$HOME/.local/bin/uv" || fail 'Binário uv fora da baseline.'
  [[ "$("$HOME/.local/bin/uv" --version | awk '{print $2}')" = "$UV_VERSION" ]] || fail 'Versão uv diferente.'
  (cd "$ROOT/manifests/locks" && sha256sum -c SHA256SUMS) || fail 'Integridade dos locks versionados falhou.'
  for f in "${BUS_LOCK:-}" "${CORE_LOCK:-}" "${CONSTRAINTS:-}"; do [[ -n "$f" && -f "$f" && -r "$f" ]] || fail 'Locks homologados ausentes ou ilegíveis.'; done
@@ -57,7 +58,11 @@ lcd(){
  [[ "$found" = yes && -s "$HOME/lumi-touch.json" ]] || fail 'LCD/calibração pendentes; retome após homologação.'
 }
 ollama(){
- if ! command -v ollama >/dev/null; then bash "$OLLAMA_INSTALLER"; fi
+ if ! command -v ollama >/dev/null; then
+  /usr/bin/python3 "$ROOT/scripts/verify-artifacts.py" --installer "$OLLAMA_INSTALLER"
+  OLLAMA_VERSION="$OLLAMA_VERSION" bash "$OLLAMA_INSTALLER"
+ fi
+ /usr/bin/python3 "$ROOT/scripts/verify-artifacts.py" --ollama "$(command -v ollama)"
  ollama --version | grep -F "$OLLAMA_VERSION" || fail 'Versão Ollama diferente.'
  sudo install -d /etc/systemd/system/ollama.service.d
  sudo install -m 0644 "$ROOT/templates/ollama/lumi.conf" /etc/systemd/system/ollama.service.d/lumi.conf
@@ -66,6 +71,7 @@ ollama(){
  sudo systemctl restart ollama
  ollama pull qwen2.5:0.5b
  ollama pull smollm2:135m-instruct-q4_0
+ /usr/bin/python3 "$ROOT/scripts/verify-artifacts.py" --models
 }
 openvoiceos(){
  local uv="$HOME/.local/bin/uv"
