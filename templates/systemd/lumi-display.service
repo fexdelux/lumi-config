@@ -1,7 +1,7 @@
 [Unit]
 Description=LUMI - LCD Display
-After=lumi-messagebus.service
-Requires=lumi-messagebus.service
+After=lumi-messagebus.service lumi-display-prepare.service
+Requires=lumi-messagebus.service lumi-display-prepare.service
 [Service]
 User=@USER@
 WorkingDirectory=@HOME@/lumi
