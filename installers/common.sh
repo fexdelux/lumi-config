@@ -45,7 +45,12 @@ python(){
 lcd(){
  clone_pin https://github.com/fexdelux/LCD-show.git "$HOME/LCD-show" "$LCD_REF"
  echo 'Driver clonado. Execute a instalação homologada LCD35-lite-show conforme docs/lcd.md; reinício e calibração são etapas manuais.'
- [[ -c /dev/fb1 && -s "$HOME/lumi-touch.json" ]] || fail 'LCD/calibração pendentes; retome após homologação.'
+ local fb found=no
+ for fb in /sys/class/graphics/fb[0-9]*; do
+  [[ -r "$fb/name" ]] || continue
+  if [[ "$(cat "$fb/name")" = fb_ili9486 && -c "/dev/${fb##*/}" ]]; then found=yes; break; fi
+ done
+ [[ "$found" = yes && -s "$HOME/lumi-touch.json" ]] || fail 'LCD/calibração pendentes; retome após homologação.'
 }
 ollama(){
  if ! command -v ollama >/dev/null; then bash "$OLLAMA_INSTALLER"; fi
