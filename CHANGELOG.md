@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.1.0-alpha.6
+Registra limites de ativação meteorológica observados no protótipo; smoke verifica limites e timer de cinco minutos. A referência da aplicação permanece v0.3.8 até a publicação de v0.4.0. Recuperação após esgotamento dos limites e instalação limpa ainda pendentes.
+
 ## 0.1.0-alpha.5
 Registra baseline de artefatos ARM64, verifica hashes dos binários e script, digests e tamanhos dos modelos após download. Versões APT registradas para auditoria. Disponibilidade de artefatos e instalação limpa ainda pendentes.
 
