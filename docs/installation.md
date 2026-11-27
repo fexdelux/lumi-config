@@ -1,5 +1,5 @@
 # Instalação experimental
-Não execute em produção sem backup. Use cartão separado e fonte estável. O script exige SHA completo da aplicação e driver, locks reais, versão uv e instalador Ollama revisado. O código funcional da aplicação está publicado; a tag v0.3.8 ainda depende da publicação final. Use SHA completo verificado, não uma branch móvel. Não há instalação zero-touch homologada.
+Não execute em produção sem backup. Use cartão separado e fonte estável. O script exige SHA completo da aplicação e driver, locks reais, versão uv e instalador Ollama revisado. A tag v0.3.8 está publicada e o manifesto inclui os SHAs homologados da aplicação e driver, além de UV 0.13.10. Use SHA completo verificado, não uma branch móvel. Não há instalação zero-touch homologada.
 
 1. Instale Raspberry Pi OS Lite ARM64 / Debian 13; habilite SSH conforme necessidade, crie usuário normal com sudo, verifique vcgencmd get_throttled (0x0).
 2. Clone lumi-config, copie manifests/versions.env.example para local.env. Preencha SHA de lumi e LCD-show; use versão uv observada e obtenha binário ARM64 da release oficial, verificando checksum. Coloque em ~/.local/bin/uv.
