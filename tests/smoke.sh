@@ -22,5 +22,10 @@ for name, count in [('bus.txt', 34), ('core.txt', 71)]:
     assert not any(n.startswith('lumi-skill-') for n in names), name
     print(f'{name}: {count} pinned packages OK')
 PY
+grep -Fxq 'StartLimitIntervalSec=60s' templates/systemd/lumi-weather.service
+grep -Fxq 'StartLimitBurst=20' templates/systemd/lumi-weather.service
+grep -Fxq 'TriggerLimitIntervalSec=60s' templates/systemd/lumi-weather.path
+grep -Fxq 'TriggerLimitBurst=10' templates/systemd/lumi-weather.path
+grep -Fxq 'OnCalendar=*-*-* *:0/5:00' templates/systemd/lumi-weather.timer
 /usr/bin/python3 scripts/verify-artifacts.py --manifest-only
 echo 'Smoke estático OK; não valida hardware nem instalação.'
