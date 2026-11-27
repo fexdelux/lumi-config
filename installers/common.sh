@@ -72,7 +72,7 @@ lumi(){
  mkdir -p "$HOME/lumi/"{config,cache,logs}
  local uv="$HOME/.local/bin/uv"
  for skill in lumi-identity lumi-fallback; do "$uv" pip install --python "$HOME/.venvs/ovos312/bin/python" --no-deps -e "$HOME/lumi/skills/$skill"; done
- for name in display weather; do
+ for name in display weather audio; do
   [[ -e "$HOME/lumi/config/$name.json" ]] || cp "$ROOT/templates/display/$name.json" "$HOME/lumi/config/$name.json"
  done
  touch "$HOME/lumi/cache/weather.request"
