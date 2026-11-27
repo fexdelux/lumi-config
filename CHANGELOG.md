@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.1.0-alpha.5
+Registra baseline de artefatos ARM64, verifica hashes dos binários e script, digests e tamanhos dos modelos após download. Versões APT registradas para auditoria. Disponibilidade de artefatos e instalação limpa ainda pendentes.
+
 ## 0.1.0-alpha.4
 Locks Python do protótipo versionados (34 Bus, 71 Core), uso por padrão e verificação SHA256 no preflight; smoke valida integridade, formato e quantidade. Overrides explícitos continuam disponíveis. Reinstalação limpa e hashes de artefatos ainda pendentes.
 
