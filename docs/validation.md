@@ -5,8 +5,11 @@ Evidências do protótipo: UI v0.3.7 iniciou e navegou nas duas skills; RSS 4827
 - [ ] Serviços ativos, bus loopback, Core pronto, identity determinística.
 - [ ] Fallback local após fonte estável; medir latência e memória.
 - [ ] Clima: alteração cidade, cache correto, falha offline, recuperação e limites de chamadas.
-- [ ] ALSA: mixer, captura/reprodução física, persistência após shutdown.
+- [x] Protótipo: mixer, captura/reprodução física, seleção, hot-plug, cancelamento e recuperação real UDEV.
+- [ ] Instalação limpa: repetir homologação de áudio e verificar persistência após shutdown.
 - [ ] Skills: detalhes, atualização, paginação com mais de três itens.
 - [ ] Simulação de energia, cancelamento em evento OVOS; regra Polkit reforçada e execução real somente depois de resolver fonte.
 - [ ] Reboot, persistência, teste offline ponta a ponta e recuperação.
 Pendências: start-limit-hit de weather.path sob chamadas repetidas, proteção global, atualização repetida do inventário, reconexão touch, timeout de parada Core, firewall efetivo, alimentação histórica 0x50000.
+
+Evidência de 27/11/2026: 39 testes automatizados, 11 verificações finais de touchscreen e 4 verificações de proteção JSON aprovados. Display em repouso: 1,33% de um núcleo em 30 s; 557 MiB disponíveis, swap zero. Não é teste prolongado nem validação de instalação limpa.
