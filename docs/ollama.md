@@ -1,0 +1,2 @@
+# Ollama
+Runtime nativo 0.40.18 CPU-only, loopback, uma geração paralela, um modelo carregado, keep_alive=0, contexto512, cloud desabilitada via variável (verificar logs). Modelos qwen2.5:0.5b e smollm2:135m-instruct-q4_0. No protótipo bibliotecas CUDA foram removidas após teste; o instalador não remove arquivos automaticamente. Registre digest de modelos e checksums do runtime antes de release reproduzível. Não use fonte instável para inferência.

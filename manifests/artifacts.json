@@ -1,0 +1,37 @@
+{
+  "observed_on": "2026-11-27",
+  "architecture": "aarch64",
+  "python": {
+    "display": "3.13.5",
+    "core": "3.12.16"
+  },
+  "uv": {
+    "version": "0.13.10",
+    "sha256": "54d8e2847b8da2889015e590ef80c4203e0730cd1b0c314da6d2dd11d5817217"
+  },
+  "ollama": {
+    "version": "0.40.18",
+    "installer_sha256": "17659c2456c9e65a3b11056b76da51774911cb822f47bf44f7f3ecc0c40528a8",
+    "binary_sha256": "3f64b5190c9c7b58feefdad2846e2f157274586b2ed82b06589bd66d2b256051"
+  },
+  "models": [
+    {
+      "name": "qwen2.5:0.5b",
+      "digest": "a8b0c51577010a279d933d14c2a8ab4b268079d44c5c8830c0a93900f1827c67",
+      "size": 397821319
+    },
+    {
+      "name": "smollm2:135m-instruct-q4_0",
+      "digest": "dbc9f6c89cb0673427e7215f12b0e71f1bcc716b780ec71da36c8dc6d28ab591",
+      "size": 91739633
+    }
+  ],
+  "apt_observed": {
+    "alsa-utils": "1.2.14-1+rpt1",
+    "coreutils": "9.7-3",
+    "python3": "3.13.5-1",
+    "python3-evdev": "1.9.1-1",
+    "python3-pil:arm64": "11.1.0-5+deb13u4",
+    "udev": "257.13-1~deb13u1"
+  }
+}

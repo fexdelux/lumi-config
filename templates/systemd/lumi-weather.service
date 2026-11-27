@@ -1,0 +1,14 @@
+[Unit]
+Description=LUMI - Weather Update
+After=network-online.target
+StartLimitIntervalSec=60s
+StartLimitBurst=20
+[Service]
+Type=oneshot
+User=@USER@
+Environment="HOME=@HOME@"
+ExecStart=/usr/bin/python3 @HOME@/lumi/scripts/lumi-weather.py
+TimeoutStartSec=30
+Nice=10
+NoNewPrivileges=true
+PrivateTmp=true

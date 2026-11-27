@@ -1,0 +1,7 @@
+// Optional only. Render @USER@, review and install as root after power tests.
+polkit.addRule(function(action, subject) {
+ if (subject.user === "@USER@" && subject.system_unit === "lumi-display.service" && subject.no_new_privileges === true &&
+ ["org.freedesktop.login1.reboot", "org.freedesktop.login1.reboot-multiple-sessions", "org.freedesktop.login1.power-off", "org.freedesktop.login1.power-off-multiple-sessions"].indexOf(action.id) >= 0) {
+  return polkit.Result.YES;
+ }
+});

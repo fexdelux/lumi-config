@@ -1,0 +1,7 @@
+local.env
+manifests/*.local
+backups/
+*.log
+*.tmp
+__pycache__/
+*.pyc

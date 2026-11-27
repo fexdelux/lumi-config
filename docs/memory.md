@@ -1,0 +1,4 @@
+# Memória
+Baseline: ZRAM /dev/zram0 904 MiB, zstd, prioridade 100; swap de disco /swapfile-lumi 2 GiB prioridade 10; vm.swappiness=60. Disco swap observado 0 B em repouso; ZRAM ~99 MiB. Não assumir que a máquina usa o mesmo gerenciador ZRAM: inspecione systemctl list-unit-files '*zram*', /etc/default/zramswap e /etc/systemd/zram-generator.conf.
+Configure apenas um gerenciador. Se usar zram-tools, revise /etc/default/zramswap (ALGO=zstd, PERCENT=100, PRIORITY=100) e valide swapon --show. Não reinicie swap em uso sem memória suficiente.
+Em instalação limpa, após conferir espaço e inexistência do arquivo: sudo fallocate -l 2G /swapfile-lumi; sudo chmod 600 /swapfile-lumi; sudo mkswap /swapfile-lumi; sudo swapon -p 10 /swapfile-lumi. Adicione uma única entrada /swapfile-lumi none swap sw,pri=10 0 0 ao fstab após backup e revisão. Não execute mkswap sobre swap existente.

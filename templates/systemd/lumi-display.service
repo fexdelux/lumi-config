@@ -1,0 +1,20 @@
+[Unit]
+Description=LUMI - LCD Display
+After=lumi-messagebus.service lumi-display-prepare.service
+Requires=lumi-messagebus.service lumi-display-prepare.service
+[Service]
+User=@USER@
+WorkingDirectory=@HOME@/lumi
+Environment="HOME=@HOME@"
+Environment="PYTHONUNBUFFERED=1"
+Environment="PYTHONPATH=/usr/lib/python3/dist-packages"
+Environment="LUMI_POWER_ENABLED=0"
+ExecStart=@HOME@/.venvs/ovos/bin/python @HOME@/lumi/scripts/lumi-display.py
+Restart=on-failure
+RestartSec=5
+TimeoutStopSec=10
+NoNewPrivileges=true
+IPAddressDeny=any
+IPAddressAllow=localhost
+[Install]
+WantedBy=multi-user.target

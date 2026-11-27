@@ -1,0 +1,4 @@
+# Diagnóstico
+bash doctor.sh; journalctl -u lumi-display -n 50 --no-pager; journalctl -u lumi-core -n 50 --no-pager. 0x50000 indica histórico de subtensão e throttling; 0x50005 indica bits ativos também. Resolva fonte antes de carga ou reboot.
+Clima indisponível: confira identidade do cache e configuração sem divulgar localização; systemctl status lumi-weather.path lumi-weather.timer lumi-weather.service. Se start-limit-hit, após cessar chamadas: sudo systemctl reset-failed lumi-weather.service lumi-weather.path; sudo systemctl restart lumi-weather.path; sudo systemctl start lumi-weather.service. Não desabilite proteções globalmente.
+Core: Python 3.13 incompatível com NumPy 1.26.4 da baseline; use 3.12.16, setuptools 80.9.0 (pkg_resources), combo-lock 0.3.1, ovos-core 1.3.1. Não force compilação pesada no Pi. Parada do Core pode chegar ao timeout de 30s; investigar.

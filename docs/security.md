@@ -1,0 +1,3 @@
+# Segurança e privacidade
+Não publique chaves SSH, Wi-Fi, logs, tokens, localização pessoal, calibração ou backups. Repositórios públicos. Configuração do clima desativada por padrão até seleção de município. Ollama e bus em loopback, Core e UI com NoNewPrivileges e IPAddressDeny/Allow localhost (enforcement ainda deve ser testado). Weather é único componente previsto para API externa em operação normal. Não é garantia de isolamento total; verifique serviços e plugins.
+Polkit opcional autoriza apenas reboot/power-off para UID e unidade display com NoNewPrivileges. UI permanece em simulação; não instale a regra antes da revisão. Usuário que pode editar scripts da unidade pode alterar seu comportamento. Não use sudo genérico na interface.

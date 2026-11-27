@@ -1,0 +1,9 @@
+[Unit]
+Description=LUMI - Weather Update Request
+[Path]
+TriggerLimitIntervalSec=60s
+TriggerLimitBurst=10
+PathChanged=@HOME@/lumi/cache/weather.request
+Unit=lumi-weather.service
+[Install]
+WantedBy=multi-user.target
