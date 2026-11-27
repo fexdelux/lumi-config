@@ -13,3 +13,5 @@ polkitd
 zram-tools
 sqlite3
 unzip
+udev
+coreutils
