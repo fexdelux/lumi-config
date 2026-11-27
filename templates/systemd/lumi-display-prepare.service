@@ -1,0 +1,11 @@
+[Unit]
+Description=LUMI - Prepare LCD Framebuffer
+After=systemd-udev-trigger.service
+Before=lumi-display.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/lib/lumi/prepare-display.sh
+RemainAfterExit=yes
+TimeoutStartSec=30
+NoNewPrivileges=true
