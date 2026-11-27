@@ -22,4 +22,5 @@ for name, count in [('bus.txt', 34), ('core.txt', 71)]:
     assert not any(n.startswith('lumi-skill-') for n in names), name
     print(f'{name}: {count} pinned packages OK')
 PY
+/usr/bin/python3 scripts/verify-artifacts.py --manifest-only
 echo 'Smoke estático OK; não valida hardware nem instalação.'
