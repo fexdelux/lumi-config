@@ -16,6 +16,9 @@ esac
 [[ -f "$ROOT/local.env" ]] || { echo 'Preencha local.env conforme o manifesto.' >&2; exit 1; }
 # local.env is trusted shell input maintained by the operator.
 source "$ROOT/local.env"
+: "${BUS_LOCK:=$ROOT/manifests/locks/bus.txt}"
+: "${CORE_LOCK:=$ROOT/manifests/locks/core.txt}"
+: "${CONSTRAINTS:=$ROOT/manifests/locks/constraints-stable.txt}"
 export ROOT
 source "$ROOT/installers/common.sh"
 preflight
