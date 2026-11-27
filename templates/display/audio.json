@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "input": {
+    "backend": "alsa",
+    "mode": "auto",
+    "card": null,
+    "device": null
+  },
+  "output": {
+    "backend": "alsa",
+    "mode": "manual",
+    "card": "Headphones",
+    "device": 0
+  },
+  "bluetooth": {
+    "enabled": false
+  }
+}
