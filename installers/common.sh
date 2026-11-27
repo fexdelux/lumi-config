@@ -24,7 +24,11 @@ preflight(){
  [[ -n "${UV_VERSION:-}" ]] || fail 'Versão uv não registrada.'
  [[ -x "$HOME/.local/bin/uv" ]] || fail 'Instale previamente uv verificado (docs/installation.md).'
  [[ "$("$HOME/.local/bin/uv" --version | awk '{print $2}')" = "$UV_VERSION" ]] || fail 'Versão uv diferente.'
- for f in "${BUS_LOCK:-}" "${CORE_LOCK:-}" "${CONSTRAINTS:-}"; do [[ -n "$f" && -f "$f" ]] || fail 'Locks homologados ausentes.'; done
+ (cd "$ROOT/manifests/locks" && sha256sum -c SHA256SUMS) || fail 'Integridade dos locks versionados falhou.'
+ for f in "${BUS_LOCK:-}" "${CORE_LOCK:-}" "${CONSTRAINTS:-}"; do [[ -n "$f" && -f "$f" && -r "$f" ]] || fail 'Locks homologados ausentes ou ilegíveis.'; done
+ if [[ "$BUS_LOCK" != "$ROOT/manifests/locks/bus.txt" || "$CORE_LOCK" != "$ROOT/manifests/locks/core.txt" || "$CONSTRAINTS" != "$ROOT/manifests/locks/constraints-stable.txt" ]]; then
+  echo 'AVISO: locks personalizados; integridade e compatibilidade sob responsabilidade do operador.' >&2
+ fi
  if [[ -e "$HOME/lumi" || -e "$HOME/LCD-show" || -e "$HOME/.venvs/ovos" || -e "$HOME/.venvs/ovos312" || -e /etc/systemd/system/lumi-display.service ]]; then
   [[ "${ALLOW_EXISTING:-no}" = yes ]] || fail 'Instalação existente: faça backup; ALLOW_EXISTING=yes somente após revisão.'
  fi
