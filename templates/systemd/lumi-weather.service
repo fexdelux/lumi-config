@@ -1,6 +1,8 @@
 [Unit]
 Description=LUMI - Weather Update
 After=network-online.target
+StartLimitIntervalSec=60s
+StartLimitBurst=20
 [Service]
 Type=oneshot
 User=@USER@
