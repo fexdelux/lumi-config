@@ -11,5 +11,16 @@ for unit in lumi-messagebus lumi-core lumi-display lumi-weather.timer lumi-weath
  printf '%s: ' "$unit"; systemctl is-active "$unit" || true
 done
 ls -l /dev/fb* /dev/snd/control* 2>/dev/null || true
-amixer -c Headphones sget PCM 2>/dev/null || true
-amixer -c Device sget Mic 2>/dev/null || true
+echo "===== ALSA ====="
+cat /proc/asound/pcm 2>/dev/null || true
+aplay -l 2>/dev/null || true
+arecord -l 2>/dev/null || true
+udevadm --version 2>/dev/null || true
+for card in /proc/asound/card[0-9]*/id; do
+ [[ -r "$card" ]] || continue
+ id="$(cat "$card")"
+ amixer -c "$id" scontents 2>/dev/null || true
+done
+if [[ -d "$HOME/lumi" ]]; then
+ (cd "$HOME/lumi" && /usr/bin/python3 -c 'from ui.providers.audio_selector import AudioSelector; print(AudioSelector().snapshot())') || echo "Diagnóstico de seleção indisponível; verifique configuração e versão."
+fi
