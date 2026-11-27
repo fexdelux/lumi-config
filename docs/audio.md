@@ -1,0 +1,2 @@
+# Áudio
+ALSA: Headphones/PCM para saída, Device/Mic para captura, Auto Gain Control para AGC. IDs podem variar em outro hardware. amixer -c Headphones sget PCM; amixer -c Device sget Mic. Mixer funcional; captura e reprodução física pendentes. Reduza volume antes de reproduzir: 100% observado +4 dB. alsa-restore.service ativo, restaura no boot e salva no shutdown normal; não garante persistência após queda elétrica. Não crie daemon adicional. STT/TTS futuros.

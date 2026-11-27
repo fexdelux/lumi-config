@@ -1,0 +1,2 @@
+# OpenVoiceOS
+MessageBus no Python 3.13 e Core no 3.12.16 instalado via uv. Pins homologados: numpy 1.26.4, setuptools 80.9.0, combo-lock 0.3.1, ovos-core 1.3.1. Preserve constraints e locks reais exportados do dispositivo; este repositório ainda não contém esses arquivos completos. Desabilitar Padatious, usar Padacioso, excluir persona Remote Llama e fallback de persona. Skills Identity e Fallback são instaladas do repo lumi. Testar pip check, bus e readiness do Core. STT/TTS não inclusos.

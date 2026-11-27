@@ -1,0 +1,21 @@
+[Unit]
+Description=LUMI - OVOS Core
+After=lumi-messagebus.service
+Requires=lumi-messagebus.service
+[Service]
+User=@USER@
+WorkingDirectory=@HOME@/lumi
+Environment="HOME=@HOME@"
+Environment="PYTHONUNBUFFERED=1"
+Environment="OPENBLAS_NUM_THREADS=1"
+Environment="OMP_NUM_THREADS=1"
+Environment="MKL_NUM_THREADS=1"
+ExecStart=@HOME@/.venvs/ovos312/bin/ovos-core
+Restart=on-failure
+RestartSec=10
+TimeoutStopSec=30
+NoNewPrivileges=true
+IPAddressDeny=any
+IPAddressAllow=localhost
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,2 @@
+# Meteorologia
+Open-Meteo opcional. Catálogo SQLite gerado de CSVs versionados na aplicação; amostra homologada 5571 municípios, 27 UFs. Timer a cada cinco minutos, intervalos de consulta 15/30/60 min, path para pedido manual. Cache atômico e identidade por código IBGE, cidade, latitude, longitude e timezone. Correção v0.3.5.1 protege botão manual por 15 s; troca rápida de cidades ainda pode disparar repetição. Ver troubleshooting. Configuração inicial desligada.

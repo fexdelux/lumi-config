@@ -1,0 +1,7 @@
+[Unit]
+Description=LUMI - Weather Update Request
+[Path]
+PathChanged=@HOME@/lumi/cache/weather.request
+Unit=lumi-weather.service
+[Install]
+WantedBy=multi-user.target
