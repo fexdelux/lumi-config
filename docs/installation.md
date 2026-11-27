@@ -1,5 +1,5 @@
 # Instalação experimental
-Não execute em produção sem backup. Use cartão separado e fonte estável. O script exige SHA completo da aplicação e driver, locks reais, versão uv e instalador Ollama revisado. A aplicação ainda precisa ser publicada a partir do Raspberry. Não há instalação zero-touch homologada.
+Não execute em produção sem backup. Use cartão separado e fonte estável. O script exige SHA completo da aplicação e driver, locks reais, versão uv e instalador Ollama revisado. O código funcional da aplicação está publicado; a tag v0.3.8 ainda depende da publicação final. Use SHA completo verificado, não uma branch móvel. Não há instalação zero-touch homologada.
 
 1. Instale Raspberry Pi OS Lite ARM64 / Debian 13; habilite SSH conforme necessidade, crie usuário normal com sudo, verifique vcgencmd get_throttled (0x0).
 2. Clone lumi-config, copie manifests/versions.env.example para local.env. Preencha SHA de lumi e LCD-show; use versão uv observada e obtenha binário ARM64 da release oficial, verificando checksum. Coloque em ~/.local/bin/uv.
@@ -10,3 +10,5 @@ Não execute em produção sem backup. Use cartão separado e fonte estável. O 
 7. Execute bash doctor.sh e docs/validation.md. Não considere sucesso de serviço equivalente a teste físico.
 
 O script não altera fstab, boot config ou regra Polkit automaticamente; são ações deliberadas do operador. Não sobrescreva uma instalação ativa. Templates Systemd podem substituir unidades existentes apenas após autorização local explícita.
+
+O provisionamento de áudio preserva config/audio.json existente e instala o template somente quando ausente. Valide os dispositivos pelo touchscreen; consulte [áudio](audio.md).
